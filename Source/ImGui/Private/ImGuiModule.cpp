@@ -143,7 +143,7 @@ void FImGuiModule::OnViewportCreated() const
 	FImGuiViewportData* ViewportData = FImGuiViewportData::GetOrCreate(ImGui::GetMainViewport());
 	if (ViewportData && !ViewportData->Overlay.IsValid())
 	{
-		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context);
+		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context).ForceVolatile(true);
 
 		ViewportData->Window = GameViewport->GetWindow();
 		ViewportData->Overlay = Overlay;
@@ -162,7 +162,7 @@ TSharedPtr<FImGuiContext> FImGuiModule::CreateWindowContext(const TSharedRef<SWi
 	FImGuiViewportData* ViewportData = FImGuiViewportData::GetOrCreate(ImGui::GetMainViewport());
 	if (ViewportData)
 	{
-		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context);
+		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context).ForceVolatile(true);
 
 		ViewportData->Window = Window;
 		ViewportData->Overlay = Overlay;
@@ -188,7 +188,7 @@ TSharedPtr<FImGuiContext> FImGuiModule::CreateViewportContext(UGameViewportClien
 	FImGuiViewportData* ViewportData = FImGuiViewportData::GetOrCreate(ImGui::GetMainViewport());
 	if (ViewportData)
 	{
-		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context);
+		const TSharedRef<SImGuiOverlay> Overlay = SNew(SImGuiOverlay).Context(Context).ForceVolatile(true);
 
 		ViewportData->Window = GameViewport->GetWindow();
 		ViewportData->Overlay = Overlay;
